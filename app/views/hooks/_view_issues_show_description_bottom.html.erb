@@ -1,0 +1,15 @@
+<% content_for :header_tags do %>
+<style type="text/css">
+a.toggle-quoted-text { font-size: 85%; }
+</style>
+
+<script type="text/javascript">
+function toggleQuotedTextVisibility(anchor) {
+  anchor = $(anchor);
+  blockquote = anchor.next("blockquote");
+  blockquote.toggle();
+  anchor.innerText = blockquote.visible() ? "- Hide quoted text -" : "- Show quoted text -";
+  return false;
+}
+</script>
+<% end %>
