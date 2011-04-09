@@ -8,7 +8,7 @@ module JournalsHelperPatch
   def render_notes_with_collased_quotes(*args)
     render_notes_without_collased_quotes(*args).gsub!(/<blockquote>/) do
       <<-EOF
-<a class="toggle-quoted-text" href="#" onclick="return toggleQuotedTextVisibility(this);">- Show quoted text -</a>
+<a class="toggle-quoted-text" href="#" onclick="return toggleQuotedTextVisibility(this);">#{translate :label_show_quoted_text}</a>
 <blockquote style="display: none;">
 EOF
     end

@@ -8,7 +8,7 @@ function toggleQuotedTextVisibility(anchor) {
   anchor = $(anchor);
   blockquote = anchor.next("blockquote");
   blockquote.toggle();
-  anchor.innerText = blockquote.visible() ? "- Hide quoted text -" : "- Show quoted text -";
+  anchor.innerText = blockquote.visible() ? "<%=l :label_hide_quoted_text %>" : "<%=l :label_show_quoted_text %>";
   return false;
 }
 </script>

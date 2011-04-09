@@ -1,0 +1,4 @@
+# English strings go here for Rails i18n
+en:
+  label_show_quoted_text: "- Show quoted text -"
+  label_hide_quoted_text: "- Hide quoted text -"
