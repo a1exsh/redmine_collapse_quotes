@@ -1,6 +1,20 @@
 <% content_for :header_tags do %>
 <style type="text/css">
-a.toggle-quoted-text { font-size: 85%; }
+a.toggle-quoted-text {
+/*  font-size: 85%; */
+  padding: 1px 16px;
+  border-radius: 4px;
+  background-repeat: no-repeat;
+  background-color: #fdd;
+}
+
+a.quoted-text-collapsed {
+  background-image: url(/images/arrow_collapsed.png);
+}
+
+a.quoted-text-expanded {
+  background-image: url(/images/arrow_expanded.png);
+}
 </style>
 
 <script type="text/javascript">
@@ -8,7 +22,15 @@ function toggleQuotedTextVisibility(anchor) {
   anchor = $(anchor);
   blockquote = anchor.next("blockquote");
   blockquote.toggle();
-  anchor.innerText = blockquote.visible() ? "<%=l :label_hide_quoted_text %>" : "<%=l :label_show_quoted_text %>";
+  if (blockquote.visible()) {
+    anchor.innerText = "<%=l :label_hide_quoted_text %>";
+    anchor.removeClassName("quoted-text-collapsed");
+    anchor.addClassName("quoted-text-expanded");
+  } else {
+    anchor.innerText = "<%=l :label_show_quoted_text %>";
+    anchor.addClassName("quoted-text-collapsed");
+    anchor.removeClassName("quoted-text-expanded");
+  }
   return false;
 }
 </script>
