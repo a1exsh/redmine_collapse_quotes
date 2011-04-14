@@ -18,20 +18,11 @@ a.quoted-text-expanded {
 </style>
 
 <script type="text/javascript">
-function toggleQuotedTextVisibility(anchor) {
-  anchor = $(anchor);
-  blockquote = anchor.next("blockquote");
-  blockquote.toggle();
-  if (blockquote.visible()) {
-    anchor.innerText = "<%=l :label_hide_quoted_text %>";
-    anchor.removeClassName("quoted-text-collapsed");
-    anchor.addClassName("quoted-text-expanded");
-  } else {
-    anchor.innerText = "<%=l :label_show_quoted_text %>";
-    anchor.addClassName("quoted-text-collapsed");
-    anchor.removeClassName("quoted-text-expanded");
-  }
-  return false;
-}
+//<![CDATA[
+function getShowQuotedTextString() { return "<%=l :label_show_quoted_text %>"; }
+function getHideQuotedTextString() { return "<%=l :label_hide_quoted_text %>"; }
+//]]>
 </script>
+<%= javascript_include_tag 'collapse_quotes',
+    :plugin => 'redmine_collapse_quotes' %>
 <% end %>

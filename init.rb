@@ -21,12 +21,6 @@ require 'dispatcher'
 
 require_dependency 'redmine_collapse_quotes/view_hooks'
 
-Dispatcher.to_prepare :redmine_collapse_quotes do
-  require_dependency 'journals_helper'
-
-  JournalsHelper.send(:include, JournalsHelperPatch) unless JournalsHelper.include?(JournalsHelperPatch)
-end
-
 Redmine::Plugin.register :redmine_collapse_quotes do
   name 'Redmine Collapse Quotes plugin'
   author 'Alex Shulgin <ash@commandprompt.com>'
