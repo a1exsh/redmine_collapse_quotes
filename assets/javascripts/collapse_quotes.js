@@ -15,12 +15,13 @@ function toggleQuotedTextVisibility(anchor) {
   anchor = $(anchor);
   blockquote = anchor.next("blockquote");
   blockquote.toggle();
+  // reflect current visibility state
   if (blockquote.visible()) {
-    anchor.innerText = getShowQuotedTextString();
+    anchor.innerText = getHideQuotedTextString();
     anchor.removeClassName("quoted-text-collapsed");
     anchor.addClassName("quoted-text-expanded");
   } else {
-    anchor.innerText = getHideQuotedTextString();
+    anchor.innerText = getShowQuotedTextString();
     anchor.addClassName("quoted-text-collapsed");
     anchor.removeClassName("quoted-text-expanded");
   }
