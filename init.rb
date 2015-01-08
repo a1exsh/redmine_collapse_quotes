@@ -17,7 +17,6 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 require 'redmine'
-require 'dispatcher'
 
 require_dependency 'redmine_collapse_quotes/view_hooks'
 

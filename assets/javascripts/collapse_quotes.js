@@ -1,28 +1,30 @@
-Event.observe(window, 'load', function() {
-  $$('#history > div.has-notes').each(function(div) {
-    div.select('blockquote').each(function(blockquote) {
-      if (blockquote.getHeight() < 100)
+$(function() {
+  $('#history div.has-notes').each(function(i) {
+    $(this).find("blockquote,pre").each(function(i) {
+      q = $(this);
+      if (q.height() < 100)
         return;
 
-      anchor = '<a class="toggle-quoted-text quoted-text-collapsed" href="#" onclick="return toggleQuotedTextVisibility(this);">' + getShowQuotedTextString() + '</a>';
-      blockquote.insert({ before: anchor });
-      blockquote.hide();
+      a = '<a class="toggle-quoted-text quoted-text-collapsed" href="#" onclick="return toggleQuotedTextVisibility(this);">' + getShowQuotedTextString() + '</a>';
+      q.before(a);
+      q.hide();
     });
   });
 });
 
-function toggleQuotedTextVisibility(anchor) {
-  anchor = $(anchor);
-  blockquote = anchor.next("blockquote");
-  blockquote.toggle();
-  if (blockquote.visible()) {
-    anchor.innerText = getShowQuotedTextString();
-    anchor.removeClassName("quoted-text-collapsed");
-    anchor.addClassName("quoted-text-expanded");
+function toggleQuotedTextVisibility(a) {
+  a = $(a);
+  q = a.next("blockquote,pre");
+  q.toggle();
+  // reflect current visibility state
+  if (q.is(':visible')) {
+    a.text(getHideQuotedTextString());
+    a.removeClass("quoted-text-collapsed");
+    a.addClass("quoted-text-expanded");
   } else {
-    anchor.innerText = getHideQuotedTextString();
-    anchor.addClassName("quoted-text-collapsed");
-    anchor.removeClassName("quoted-text-expanded");
+    a.text(getShowQuotedTextString());
+    a.addClass("quoted-text-collapsed");
+    a.removeClass("quoted-text-expanded");
   }
   return false;
 }
