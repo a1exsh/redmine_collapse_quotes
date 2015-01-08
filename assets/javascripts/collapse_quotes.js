@@ -1,6 +1,6 @@
 $(function() {
-  $('#history > div.has-notes').each(function(i) {
-    $(this).find("blockquote").each(function(i) {
+  $('#history div.has-notes').each(function(i) {
+    $(this).find("blockquote,pre").each(function(i) {
       q = $(this);
       if (q.height() < 100)
         return;
@@ -14,7 +14,7 @@ $(function() {
 
 function toggleQuotedTextVisibility(a) {
   a = $(a);
-  q = a.next("blockquote");
+  q = a.next("blockquote,pre");
   q.toggle();
   // reflect current visibility state
   if (q.is(':visible')) {
