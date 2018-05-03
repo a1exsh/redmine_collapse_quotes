@@ -1,1 +1,4 @@
 Redmine plugin to collapse quotes in issue history.
+History
+* v 0.0.2:
+ ** Made image links be relative so that it both works with redmine installed at the root or in a subfolder (such as /redmine)
